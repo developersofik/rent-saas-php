@@ -14,4 +14,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Doughnut chart for category distribution
+  const ctx2 = document.getElementById('categoryChart');
+  if (ctx2) {
+    const labels = JSON.parse(ctx2.dataset.labels || '[]');
+    const values = JSON.parse(ctx2.dataset.values || '[]');
+    new Chart(ctx2, {
+      type: 'doughnut',
+      data: {
+        labels: labels,
+        datasets: [{ data: values, backgroundColor: ['#4e79a7','#f28e2b','#e15759','#76b7b2'] }]
+      },
+      options: { plugins: { legend: { position: 'bottom' } } }
+    });
+  }
 });
