@@ -1,0 +1,13 @@
+/* Minimal custom styles on top of Bootstrap */
+body { background: #f6f8fb; }
+.sidebar { width: 260px; min-height: 100vh; position: fixed; background: #fff; border-right: 1px solid #eee; }
+.content { margin-left: 260px; padding: 24px; }
+.brand { font-weight: 700; font-size: 18px; }
+.nav-link.active { background: #eef4ff; border-radius: 10px; }
+.table-sm td, .table-sm th { padding: .4rem; }
+.card-kpi { border: 1px solid #eef1f6; }
+.print-area { background: #fff; padding: 20px; }
+@media print {
+  .no-print { display: none; }
+  .content { margin: 0; }
+}
