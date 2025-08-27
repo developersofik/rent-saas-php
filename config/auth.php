@@ -30,3 +30,15 @@ function logout() {
 function is_admin() {
   return (current_user()['role'] ?? null) === 'ADMIN';
 }
+function has_role($roles){
+  $user=current_user();
+  if(!$user) return false;
+  $roles=(array)$roles;
+  return in_array($user['role'],$roles);
+}
+function require_role($roles){
+  if(!has_role($roles)){
+    http_response_code(403);
+    die('Forbidden');
+  }
+}
