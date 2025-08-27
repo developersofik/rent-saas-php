@@ -22,6 +22,9 @@ class UnitsController {
       'base_rent' => (float)($_POST['base_rent'] ?? 0),
       'deposit_amount' => (float)($_POST['deposit_amount'] ?? 0),
       'status' => $_POST['status'] ?? 'vacant',
+      'meter_number_electric' => $_POST['meter_number_electric'] ?? '',
+      'meter_number_water' => $_POST['meter_number_water'] ?? '',
+      'meter_number_gas' => $_POST['meter_number_gas'] ?? '',
       'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')
     ];
     $id = $this->m->insert($data);
@@ -40,6 +43,9 @@ class UnitsController {
       'base_rent' => (float)($_POST['base_rent'] ?? 0),
       'deposit_amount' => (float)($_POST['deposit_amount'] ?? 0),
       'status' => $_POST['status'] ?? 'vacant',
+      'meter_number_electric' => $_POST['meter_number_electric'] ?? '',
+      'meter_number_water' => $_POST['meter_number_water'] ?? '',
+      'meter_number_gas' => $_POST['meter_number_gas'] ?? '',
       'updated_at' => date('Y-m-d H:i:s')
     ];
     $this->m->update($id,$data);

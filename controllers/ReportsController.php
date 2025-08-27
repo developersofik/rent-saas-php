@@ -19,6 +19,19 @@ class ReportsController {
     $stmt->execute($params);
     $items = $stmt->fetchAll();
     $items = array_map(function($r){ $r['totals_json'] = json_decode($r['totals_json'] ?: '{}', true); return $r; }, $items);
+    if (($_GET['export'] ?? '') === 'pdf') {
+      require_once __DIR__ . '/../lib/fpdf.php';
+      $pdf = new FPDF();
+      $pdf->AddPage();
+      $pdf->SetFont('Arial','',12);
+      $pdf->Cell(0,10,'Monthly Collection Sheet',0,1);
+      foreach ($items as $idx=>$it) {
+        $line = ($idx+1).'. '.$it['tenant'].'/'.($it['unit_no'] ?? '').' '.($it['totals_json']['grand_total'] ?? 0);
+        $pdf->Cell(0,8,$line,0,1);
+      }
+      $pdf->Output();
+      return;
+    }
     view('reports/monthly', compact('items','buildings','month','status','building_id'));
   }
   public function yearly() {
@@ -27,6 +40,18 @@ class ReportsController {
     $stmt = db()->prepare("SELECT period_month, SUM(JSON_EXTRACT(totals_json,'$.grand_total')) as total FROM invoices WHERE LEFT(period_month,4)=? GROUP BY period_month");
     $stmt->execute([$year]);
     $rows = $stmt->fetchAll();
+    if (($_GET['export'] ?? '') === 'pdf') {
+      require_once __DIR__ . '/../lib/fpdf.php';
+      $pdf = new FPDF();
+      $pdf->AddPage();
+      $pdf->SetFont('Arial','',12);
+      $pdf->Cell(0,10,'Yearly Summary '.$year,0,1);
+      foreach ($rows as $r) {
+        $pdf->Cell(0,8,$r['period_month'].': '.$r['total'],0,1);
+      }
+      $pdf->Output();
+      return;
+    }
     view('reports/yearly', compact('rows','year'));
   }
 }

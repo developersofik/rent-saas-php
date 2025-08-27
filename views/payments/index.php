@@ -4,13 +4,14 @@
   <a class="btn btn-primary" href="<?= base_url('index.php?r=payments/create') ?>">Add</a>
 </div>
 <table class="table table-sm table-striped">
-  <thead><tr><th>#</th><th>Invoice</th><th>Method</th><th>Amount</th><th>Paid At</th><th></th></tr></thead>
+  <thead><tr><th>#</th><th>Invoice</th><th>Method</th><th>Reference</th><th>Amount</th><th>Paid At</th><th></th></tr></thead>
   <tbody>
   <?php foreach ($items as $p): ?>
     <tr>
       <td><?= e($p['id']) ?></td>
       <td><?= e($p['invoice_id']) ?></td>
       <td><?= e($p['method']) ?></td>
+      <td><?= e($p['txn_ref']) ?></td>
       <td><?= e($p['amount']) ?></td>
       <td><?= e($p['paid_at']) ?></td>
       <td class="text-end">
