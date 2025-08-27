@@ -19,6 +19,31 @@ class DashboardController {
     } catch (Throwable $e) { $outstanding = 0; }
     $collection_mtd = (int)db()->query("SELECT COALESCE(SUM(amount),0) c FROM payments WHERE MONTH(paid_at)=MONTH(CURDATE()) AND YEAR(paid_at)=YEAR(CURDATE())")->fetch()['c'];
     $kpis = compact('tenants','units','outstanding','collection_mtd');
-    view('dashboard/index', ['kpis' => $kpis]);
+
+    // Fetch latest invoices with tenant name and amount for dashboard list
+    $latestInvoices = [];
+    try {
+      $sql = "SELECT i.id, t.name AS tenant, CAST(JSON_EXTRACT(i.totals_json,'$.grand_total') AS DECIMAL(12,2)) AS amount
+              FROM invoices i
+              LEFT JOIN leases l ON i.lease_id = l.id
+              LEFT JOIN tenants t ON l.tenant_id = t.id
+              ORDER BY i.created_at DESC
+              LIMIT 5";
+      $latestInvoices = db()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    } catch (Throwable $e) {
+      $latestInvoices = [];
+    }
+
+    // Sample product category distribution for the doughnut chart
+    $categoryData = [
+      'labels' => ['Rent', 'Utilities', 'Parking', 'Others'],
+      'values' => [55, 25, 10, 10]
+    ];
+
+    view('dashboard/index', [
+      'kpis' => $kpis,
+      'latestInvoices' => $latestInvoices,
+      'categoryData' => $categoryData
+    ]);
   }
 }

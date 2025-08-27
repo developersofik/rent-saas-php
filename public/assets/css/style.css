@@ -7,6 +7,8 @@ body { background: #f6f8fb; }
 .table-sm td, .table-sm th { padding: .4rem; }
 .card-kpi { border: 1px solid #eef1f6; }
 .print-area { background: #fff; padding: 20px; }
+.dashboard-list li { font-size: 14px; padding: 4px 0; }
+.dashboard-list li + li { border-top: 1px solid #eef1f6; }
 @media print {
   .no-print { display: none; }
   .content { margin: 0; }
