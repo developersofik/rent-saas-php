@@ -9,8 +9,13 @@ $map = [
   'auth' => 'AuthController',
   'dashboard' => 'DashboardController',
   'buildings' => 'BuildingsController',
+  'units' => 'UnitsController',
   'tenants' => 'TenantsController',
+  'leases' => 'LeasesController',
   'invoices' => 'InvoicesController',
+  'payments' => 'PaymentsController',
+  'expense_heads' => 'ExpenseHeadsController',
+  'expenses' => 'ExpensesController',
   'reports' => 'ReportsController',
 ];
 

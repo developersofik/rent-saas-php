@@ -1,11 +1,11 @@
 <?php require_auth(); ?>
-<h4>Create Invoice (Basic)</h4>
+<h4>Create Invoice</h4>
 <form method="post" action="<?= base_url('index.php?r=invoices/store') ?>">
   <?php csrf_field() ?>
-  <div class="row g-3">
+  <div class="row g-3 mb-3">
     <div class="col-md-3">
       <label class="form-label">Lease ID</label>
-      <input class="form-control" name="lease_id" placeholder="e.g., 1" required>
+      <input class="form-control" name="lease_id" required>
     </div>
     <div class="col-md-3">
       <label class="form-label">Period (YYYY-MM)</label>
@@ -15,10 +15,25 @@
       <label class="form-label">Invoice No</label>
       <input class="form-control" name="invoice_no" placeholder="INV-0001" required>
     </div>
-    <div class="col-md-3">
-      <label class="form-label">Total (৳)</label>
-      <input class="form-control" name="grand_total" placeholder="15000" required>
-    </div>
+  </div>
+  <table class="table table-sm">
+    <thead><tr><th>Description</th><th>Qty</th><th>Rate</th><th>Amount</th></tr></thead>
+    <tbody>
+      <?php foreach(['Rent','Utilities','Parking','Others'] as $d): ?>
+      <tr>
+        <td><input class="form-control" name="desc[]" value="<?= $d ?>"></td>
+        <td><input class="form-control" name="qty[]" value="1"></td>
+        <td><input class="form-control" name="rate[]" value="0"></td>
+        <td class="text-muted">auto</td>
+      </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+  <div class="row g-3">
+    <div class="col-md-3"><label class="form-label">Previous Due</label><input class="form-control" name="previous_due" value="0"></div>
+    <div class="col-md-3"><label class="form-label">Discount</label><input class="form-control" name="discount" value="0"></div>
+    <div class="col-md-3"><label class="form-label">Advance Adjust</label><input class="form-control" name="advance_adjust" value="0"></div>
+    <div class="col-md-3"><label class="form-label">Tax</label><input class="form-control" name="tax" value="0"></div>
   </div>
   <div class="mt-3">
     <button class="btn btn-primary">Save</button>
