@@ -24,6 +24,8 @@
   <div class="col-md-3">
     <button class="btn btn-primary">ফিল্টার</button>
     <button type="button" class="btn btn-secondary no-print" onclick="window.print()">প্রিন্ট</button>
+    <a class="btn btn-outline-secondary" href="<?= base_url('index.php?r=reports/monthly&month='.e($month).'&status='.e($status).'&building_id='.e($building_id).'&export=pdf') ?>">PDF</a>
+    <a class="btn btn-outline-primary" href="<?= base_url('index.php?r=invoices/print_month&month='.e($month).'&building_id='.e($building_id)) ?>" target="_blank">Print Invoices</a>
   </div>
 </form>
 <table class="table table-sm table-bordered">

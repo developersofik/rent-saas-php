@@ -32,6 +32,20 @@
       </select>
     </div>
   </div>
+  <div class="row g-3 mt-2">
+    <div class="col-md-4">
+      <label class="form-label">Electric Meter</label>
+      <input class="form-control" name="meter_number_electric" value="<?= e($item['meter_number_electric'] ?? '') ?>">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Water Meter</label>
+      <input class="form-control" name="meter_number_water" value="<?= e($item['meter_number_water'] ?? '') ?>">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Gas Meter</label>
+      <input class="form-control" name="meter_number_gas" value="<?= e($item['meter_number_gas'] ?? '') ?>">
+    </div>
+  </div>
   <div class="mt-3">
     <button class="btn btn-primary">Save</button>
     <a class="btn btn-light" href="<?= base_url('index.php?r=units/index') ?>">Cancel</a>

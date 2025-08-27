@@ -29,6 +29,7 @@ require_once __DIR__ . '/../../config/auth.php';
       <a class="nav-link d-block py-2 px-3 <?= (strpos($_GET['r'] ?? '','leases')===0) ? 'active':'' ?>" href="<?= base_url('index.php?r=leases/index') ?>">Leases</a>
       <a class="nav-link d-block py-2 px-3 <?= (strpos($_GET['r'] ?? '','invoices')===0) ? 'active':'' ?>" href="<?= base_url('index.php?r=invoices/index') ?>">Invoices</a>
       <a class="nav-link d-block py-2 px-3 <?= (strpos($_GET['r'] ?? '','payments')===0) ? 'active':'' ?>" href="<?= base_url('index.php?r=payments/index') ?>">Payments</a>
+      <a class="nav-link d-block py-2 px-3 <?= (strpos($_GET['r'] ?? '','income_heads')===0) ? 'active':'' ?>" href="<?= base_url('index.php?r=income_heads/index') ?>">Income Heads</a>
       <a class="nav-link d-block py-2 px-3 <?= (strpos($_GET['r'] ?? '','expense_heads')===0) ? 'active':'' ?>" href="<?= base_url('index.php?r=expense_heads/index') ?>">Expense Heads</a>
       <a class="nav-link d-block py-2 px-3 <?= (strpos($_GET['r'] ?? '','expenses')===0) ? 'active':'' ?>" href="<?= base_url('index.php?r=expenses/index') ?>">Expenses</a>
       <a class="nav-link d-block py-2 px-3 <?= (strpos($_GET['r'] ?? '','reports')===0) ? 'active':'' ?>" href="<?= base_url('index.php?r=reports/monthly') ?>">Reports</a>

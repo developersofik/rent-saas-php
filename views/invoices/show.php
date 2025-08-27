@@ -10,7 +10,8 @@
   <div class="row">
     <div class="col-6">
       <h5><?= e($config['app_name']) ?></h5>
-      <div>Building: <?= e($item['building_id']) ?></div>
+      <div>Building: <?= e($item['building_name']) ?></div>
+      <div>Tenant: <?= e($item['tenant']) ?> | Unit: <?= e($item['unit_no']) ?> | Floor: <?= e($item['floor']) ?></div>
     </div>
     <div class="col-6 text-end">
       <strong>Invoice</strong><br>
@@ -20,11 +21,12 @@
   </div>
   <hr>
   <table class="table table-sm">
-    <thead><tr><th>SL</th><th>Description</th><th class="text-end">Qty</th><th class="text-end">Rate</th><th class="text-end">Amount</th></tr></thead>
+    <thead><tr><th>SL</th><th>Head</th><th>Description</th><th class="text-end">Qty</th><th class="text-end">Rate</th><th class="text-end">Amount</th></tr></thead>
     <tbody>
       <?php foreach ($lines as $i=>$ln): ?>
       <tr>
         <td><?= $i+1 ?></td>
+        <td><?= e($ln['head_name']) ?></td>
         <td><?= e($ln['description']) ?></td>
         <td class="text-end"><?= e($ln['qty']) ?></td>
         <td class="text-end"><?= e($ln['rate']) ?></td>

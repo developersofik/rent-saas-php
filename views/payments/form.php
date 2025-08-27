@@ -16,6 +16,10 @@
       <input class="form-control" name="method" required>
     </div>
     <div class="col-md-3">
+      <label class="form-label">Reference</label>
+      <input class="form-control" name="txn_ref">
+    </div>
+    <div class="col-md-3">
       <label class="form-label">Amount</label>
       <input class="form-control" name="amount" required>
     </div>
